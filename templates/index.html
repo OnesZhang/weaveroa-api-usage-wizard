@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>泛微EC9代码块问题自动生成</title>
+    <style>
+        /* Add your custom CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>泛微EC9代码块问题自动生产-ChatGPT问题模板</h1>
+    <h2>API搜索</h2>
+    <input type="text" id="apiSearch" placeholder="API接口搜索">
+
+    <form id="apiForm"> <!-- Add the <form> tag here -->
+        <div id="apiTree">
+            {% for category in apis %}
+                <h2>{{ category.name }}</h2>
+                <ul>
+                    {% for subcategory in category.subcategories %}
+                        <li>
+                            <span class="subcategory">{{ subcategory.name }}</span>
+                            <ul>
+                                {% for api in subcategory.apis %}
+                                    <li>
+                                        <input type="checkbox" name="selectedAPIs" value="{{ api.name }}"> {{ api.name }} - {{ api.description }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+        
+        <h1>需求内容</h1>
+        <textarea name="requirements" rows="4" cols="50"></textarea>
+        <br>
+        <button type="submit">生成ChatGPT问题模板</button>
+    </form> <!-- Add the </form> tag here -->
+
+    <div id="result" style="display: none;">
+        <h1>ChatGPT问题模板：</h1>
+        <pre id="promptTemplate"></pre>
+    </div>
+
+    <script>
+        // Expand/collapse subcategories
+        var subcategories = document.getElementsByClassName("subcategory");
+        Array.from(subcategories).forEach(function(subcategory) {
+            subcategory.addEventListener("click", function() {
+                this.parentNode.querySelector("ul").classList.toggle("collapsed");
+            });
+        });
+
+        // API search
+        var apiSearchInput = document.getElementById("apiSearch");
+        apiSearchInput.addEventListener("input", function() {
+            var searchValue = apiSearchInput.value.toLowerCase();
+            var apiItems = document.querySelectorAll("#apiTree input[type='checkbox']");
+            
+            Array.from(apiItems).forEach(function(apiItem) {
+                var apiName = apiItem.value.toLowerCase();
+                var apiListItem = apiItem.parentNode;
+                var subcategoryItem = apiListItem.parentNode.parentNode;
+                var categoryItem = subcategoryItem.parentNode;
+
+                if (apiName.includes(searchValue)) {
+                    apiListItem.style.display = "block";
+                    subcategoryItem.style.display = "block";
+                    categoryItem.style.display = "block";
+                } else {
+                    apiListItem.style.display = "none";
+                    // Check if any visible APIs are left in the subcategory
+                    var visibleAPIs = Array.from(subcategoryItem.querySelectorAll("li")).filter(function(item) {
+                        return item.style.display !== "none";
+                    });
+                    if (visibleAPIs.length === 0) {
+                        subcategoryItem.style.display = "none";
+                        // Check if any visible subcategories are left in the category
+                        var visibleSubcategories = Array.from(categoryItem.querySelectorAll("li")).filter(function(item) {
+                            return item.style.display !== "none";
+                        });
+                        if (visibleSubcategories.length === 0) {
+                            categoryItem.style.display = "none";
+                        }
+                    }
+                }
+            });
+        });
+
+        document.getElementById("apiForm").addEventListener("submit",function(event) {event.preventDefault(); // Prevent form submission
+            // Get selected APIs
+            var selectedAPIs = Array.from(document.querySelectorAll("input[name='selectedAPIs']:checked"))
+                .map(function(checkbox) {
+                    return checkbox.value;
+                });
+
+            // Get user requirements
+            var requirements = document.querySelector("textarea[name='requirements']").value;
+
+            // Create request payload
+            var payload = {
+                "selectedAPIs": selectedAPIs,
+                "requirements": requirements
+            };
+
+            // Make AJAX/Fetch request to the backend
+            fetch("/generate-prompt", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                // Display the generated prompt template
+                document.getElementById("promptTemplate").textContent = data.promptTemplate;
+                document.getElementById("result").style.display = "block";
+            })
+            .catch(function(error) {
+                console.error("An error occurred:", error);
+            });
+        });
+    </script>
+</body>
+</html>

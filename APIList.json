@@ -1,0 +1,148 @@
+[{
+        "name": "E9流程表单前端接口API",
+        "subcategories": [{
+                "name": "1.说明",
+                "apis": [{
+                    "name": "1.2 移动端判断",
+                    "description": "可通过方法WfForm.isMobile()判断是否移动端",
+                    "parameters": "var isMobile = WfForm.isMobile(); //true表示是eMobile、微信、钉钉等移动终端，false代表PC端"
+                }]
+            },
+            {
+                "name": "2.注册事件-钩子",
+                "apis": [{
+                        "name": "2.1注册事件钩子说明",
+                        "description": "使用注册事件必选",
+                        "parameters": "API：egisterCheckEvent:function(type,fun)，type：动作类型，多个逗号分隔，fun：自定义函数，此函数入参为callback，执行自定义逻辑完成或异步ajax的success函数体内，放行需调用callback，不调用代表阻断后续操作"
+                    },
+                    {
+                        "name": "2.2 保存",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_SAVE"
+                    },
+                    {
+                        "name": "2.3 提交/批准/提交需反馈/不需反馈等",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_SUBMIT"
+                    },
+                    {
+                        "name": "2.4 提交至确认页面，如果是确认界面，点确认触发的是SUBMIT",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_SUBMITCONFIRM"
+                    },
+                    {
+                        "name": "2.5 退回",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_REJECT"
+                    },
+                    {
+                        "name": "2.6 批注提交",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_REMARK"
+                    },
+                    {
+                        "name": "2.7 干预",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_INTERVENE"
+                    },
+                    {
+                        "name": "2.8 转发",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_FORWARD"
+                    },
+                    {
+                        "name": "2.9 强制收回",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_TAKEBACK"
+                    },
+                    {
+                        "name": "2.10 删除",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_DELETE"
+                    },
+                    {
+                        "name": "2.11 添加明细行，需拼明细表序号",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_ADDROW"
+                    },
+                    {
+                        "name": "2.12 删除明细行，需拼明细表序号",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_DELROW"
+                    },
+                    {
+                        "name": "2.13 打印预览",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_PRINTPREVIEW"
+                    },
+                    {
+                        "name": "2.14 移动端-编辑明细",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_EDITDETAILROW"
+                    },
+                    {
+                        "name": "2.15 校验必填前触发事件",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_BEFOREVERIFY"
+                    },
+                    {
+                        "name": "2.16 转办",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_TURNHANDLE"
+                    },
+                    {
+                        "name": "2.17 意见征询",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_ASKOPINION"
+                    },
+                    {
+                        "name": "2.18 征询转办",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_TAKFROWARD"
+                    },
+                    {
+                        "name": "2.19 传阅",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_TURNREAD"
+                    },
+                    {
+                        "name": "2.20 强制归档",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_FORCEOVER"
+                    },
+                    {
+                        "name": "2.21 点右键按钮前",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_BEFORECLICKBTN"
+                    },
+                    {
+                        "name": "2.22 保存后页面跳转前",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_SAVECOMPLETE"
+                    },
+                    {
+                        "name": "2.23 撤回",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_WITHDRAW"
+                    },
+                    {
+                        "name": "2.24 页面关闭",
+                        "description": "",
+                        "parameters": "动作:WfForm.OPER_CLOSE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "建模API-暂无",
+        "subcategories": [{
+            "name": "暂无",
+            "apis": [{
+                "name": "暂无",
+                "description": "暂无",
+                "parameters": "暂无"
+            }]
+        }]
+    }
+]
