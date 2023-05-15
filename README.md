@@ -1,5 +1,7 @@
 # weaveroa-api-usage-wizard
 "WeaverOA Question Wizard for how to use api"
+注：所有内容均由chatgpt全程辅助自动生成
+
 # WeaverOA API 使用向导
 
 WeaverOA API 使用向导是一个旨在利用 ChatGPT 强大的语言模型简化生成 API 使用问题模板的过程的项目。
