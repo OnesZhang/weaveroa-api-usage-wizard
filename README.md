@@ -1,5 +1,52 @@
 # weaveroa-api-usage-wizard
 "WeaverOA Question Wizard for how to use api"
+# WeaverOA API 使用向导
+
+WeaverOA API 使用向导是一个旨在利用 ChatGPT 强大的语言模型简化生成 API 使用问题模板的过程的项目。
+
+## 项目概述
+
+WeaverOA API 使用向导允许开发者基于选择的 API 和特定需求生成问题模板。通过利用 ChatGPT 的能力，该项目自动化生成问题模板的过程，减少了手动工作的工作量。
+
+项目包括以下组件：
+- `templates` 目录：包含用户界面的 HTML 模板。
+- `APIList.json`：包含 API 数据的 JSON 文件。
+- `api_list.py`：处理 API 数据的 Python 模块。
+- `favicon.ico`：Web 应用程序的图标文件。
+- `main.py`：运行 Flask Web 应用程序的 Python 脚本。
+- `prompt_generator.py`：使用 ChatGPT 生成问题模板的 Python 模块。
+- `template_engine.py`：用于渲染 HTML 模板的 Python 模块。
+- `user_interface.py`：处理用户交互和 API 请求的 Python 模块。
+
+## 使用方法
+
+1. 运行 `pip install -r requirements.txt` 安装所需的依赖项。
+2. 修改 `APIList.json` 文件，包含您所需的 API 数据。
+3. 执行 `python main.py` 运行 Flask Web 应用程序。
+4. 在 Web 浏览器中访问 `http://localhost:8000` 来访问应用程序。
+5. 选择所需的 API，指定需求，并单击“生成问题模板”按钮。
+6. 生成的问题模板将显示在“ChatGPT 问题模板”部分。
+
+## 自定义
+
+您可以通过修改 `APIList.json` 文件中的 API 数据来自定义项目。根据需要添加、删除或编辑 API 条目。
+
+您还可以通过修改 `prompt_generator.py` 模块中的逻辑来自定义生成的问题模板。调整模板生成过程以满足特定需求。
+
+## 错误处理
+
+项目包含错误处理，以确保用户体验的顺畅。如果发生任何错误，将向用户显示相应的错误消息。
+
+## 致谢
+
+本项目利用了由 OpenAI 开发的强大语言模型 ChatGPT，以及 Flask、HTML、JavaScript 和其他工具和技术。我们要感谢 OpenAI 提供先进的语言模型和技术，以及 Flask 和其他开源项目的贡献者和维护者。这些工具和技术使得该项目成为可能，提升了开发者和用户的体验和效率。
+
+如果您有任何问题、建议或反馈，请随时与我们联系。感谢您的支持和使用！
+
+---
+*注意：本项目是基于 ChatGPT 生成模型的原型开发，它根据提供的输入生成输出。生成的问题模板可能不完全准确或与特定需求一致。在实际应用中
+
+
 # WeaverOA API Usage Wizard
 
 The WeaverOA API Usage Wizard is a project aimed at simplifying the process of generating API usage question templates using the power of ChatGPT, a state-of-the-art language model developed by OpenAI.
